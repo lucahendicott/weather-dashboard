@@ -6,3 +6,13 @@
     margin-left: 20px;
     float: left;
 }
+
+.row {
+  margin-top: 100px;
+  margin-left: 50px;
+  margin-right: 60px;
+}
+
+h3 {
+  margin-top: 200px;
+}
