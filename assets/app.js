@@ -1,4 +1,4 @@
-//set up some loval varbs
+//set up some local varbs
 let apiKey = "30da43373157d45ad4440e9c0dc3b9d0"
 let cityNameInput = document.querySelector("#cityInput")
 let submitCityInput = document.querySelector("#submitCity")
@@ -88,7 +88,7 @@ function fetchFiveDay(cityValue) {
       });
     };
 
-    //appending saved city searches to an input form with click event listener to retrive their info on click
+    //appending saved city searches to an input form with click event listener to retrive their info on click (still broken but getting closer)
     function appendHistory() {
       let getSearchHistory = JSON.parse(localStorage.getItem("search"))
       searchHistory.innerHTML = "";
