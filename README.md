@@ -8,6 +8,8 @@ JavaScript is whats mainly powering this app, using calls to fetch info from Ope
 
 I had some struggles with the loacal storage and appending the stored citry searches to an input form. I also had some struggles with the UV index API call and displaying the weather icons. It's definitely a project I will keep working on and refactoring to learn as much as I can on this one!
 
+![Screen Shot 2020-11-10 at 6 44 17 PM](https://user-images.githubusercontent.com/70814349/98759084-24cd7800-2385-11eb-90d2-2c4658e15efa.png)
+
 
 ## Credits
 [Basic weather Dash help](https://bithacker.dev/fetch-weather-openweathermap-api-javascript)<br>
