@@ -16,8 +16,8 @@
       <div class="card col-4">
         <div class="card-body">
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="City" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input id="cityInput" class="form-control mr-sm-2" type="search" placeholder="City" aria-label="Search">
+                <button id="submitCity" class="btn btn-outline-success my-2 my-sm-0">Search</button>
               </form>
         </div>
       </div>
@@ -36,11 +36,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
-        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
-        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
-        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
-        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+        <div id="day1" class="col forecast bg-primary text-white ml-3 mb-3 rounded">
+          <h4 id="city5"></h4>
+          <p id="temp5"></p>
+          <p id="humidity5"></p>
+        </div>
+        <div id="day2" class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+        <div id="day3" class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+        <div id="day4" class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+        <div id="day5" class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
     </div>
       
     
