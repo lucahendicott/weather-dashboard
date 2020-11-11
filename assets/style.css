@@ -7,12 +7,8 @@
     float: left;
 }
 
-.row {
-  margin-top: 100px;
-  margin-left: 50px;
-  margin-right: 60px;
-}
-
-h3 {
-  margin-top: 200px;
+#header5day {
+  margin-top: 400px;
+  padding-left: 100px;
+  
 }

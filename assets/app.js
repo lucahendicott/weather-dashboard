@@ -1,5 +1,4 @@
 let apiKey = "30da43373157d45ad4440e9c0dc3b9d0"
-let cityName = "oakland"
 let cityNameInput = document.querySelector("#cityInput")
 let submitCityInput = document.querySelector("#submitCity")
 let currentCity = document.querySelector("#city")
@@ -50,6 +49,7 @@ fetch(currentUrl)
 // add event listener to the search button and display the values for the fetch functions called inside
  submitCityInput.addEventListener("click", function(e){
    e.preventDefault()
+   localStorage.setItem("search",JSON.stringify(cityNameInput.value))
   fetchCurrent(cityNameInput.value)
   fetchFiveDay(cityNameInput.value)
  })
