@@ -1,3 +1,4 @@
+//set up some loval varbs
 let apiKey = "30da43373157d45ad4440e9c0dc3b9d0"
 let cityNameInput = document.querySelector("#cityInput")
 let submitCityInput = document.querySelector("#submitCity")
@@ -21,6 +22,7 @@ let dayFourHumid = document.querySelector("#humidityFour5")
 let dayFiveDate = document.querySelector("#cityFive5")
 let dayFiveTemp = document.querySelector("#tempFive5")
 let dayFiveHumid = document.querySelector("#humidityFive5")
+let searchHistory = document.querySelector("#searchHistory")
 
 
 fetchCurrent()
@@ -52,6 +54,7 @@ fetch(currentUrl)
    localStorage.setItem("search",JSON.stringify(cityNameInput.value))
   fetchCurrent(cityNameInput.value)
   fetchFiveDay(cityNameInput.value)
+  appendHistory()
  })
 
 // function fetching 5 day url and appending the values to the HTML content
@@ -84,10 +87,30 @@ function fetchFiveDay(cityValue) {
         dayFiveHumid.innerHTML = "Humidity: " + data.list[36].main.humidity + "%"
       });
     };
+
+    //appending saved city searches to an input form with click event listener to retrive their info on click
+    function appendHistory() {
+      let getSearchHistory = JSON.parse(localStorage.getItem("search"))
+      searchHistory.innerHTML = "";
+      for (let i=0; i < getSearchHistory.length; i++) {
+          let savedCity = document.createElement("input");
+          savedCity.setAttribute("class", "form-control d-block bg-white");
+          savedCity.setAttribute("readonly", true);
+          savedCity.setAttribute("type", "text");
+          savedCity.setAttribute("value", getSearchHistory);
+          savedCity.addEventListener("click",function() {
+              fetchCurrent()
+              fetchFiveDay()
+          })
+          searchHistory.appendChild(savedCity);
+      }
+  }
     
+
+  
     // let uvIndexUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&APPID=" + apiKey
-    // let latitude = cityName.data.coord.lat
-    // let longitude = cityName.data.coord.lon
+    // let latitude = cityNameInput.value
+    // let longitude = cityNameInput.value
     
     // fetch(uvIndexUrl)
     // .then(function (response) {
@@ -98,4 +121,3 @@ function fetchFiveDay(cityValue) {
       
     // });
     
-
