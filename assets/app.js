@@ -28,34 +28,47 @@ let searchHistory = document.querySelector("#searchHistory")
 fetchCurrent()
 fetchFiveDay()
 
+
 // function fetching the current day weather and appending those values to the HTML content
 function fetchCurrent(cityValue) {
   if(!cityValue){
     cityValue = "oakland"
   }
   let currentUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityValue + "&appid=" + apiKey + "&units=imperial"
-fetch(currentUrl)
+  fetch(currentUrl)
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
     console.log(data);
+    let uvIndexUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + data.coord.lat + "&lon=" + data.coord.lon + "&APPID=" + apiKey
+  fetch(uvIndexUrl)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (uvData) {
+    console.log(uvData);
     currentCity.innerHTML = data.name + ": " + new Date().toLocaleString() 
     currentCityTemp.innerHTML = "Temperature: " + data.main.temp + " °F"
     currentCityHumid.innerHTML = "Humidity: " + data.main.humidity + "%"
     currentCityWind.innerHTML = "Wind Speed: " + data.wind.speed + " MPH"
-    // currentCityUv.innerHTML = "UV Index: " + latitude + longitude
-    });
-};
+    currentCityUv.innerHTML = "UV Index: " + uvData.value
+  });
+ });
+}
 
+
+let search = []
 // add event listener to the search button and display the values for the fetch functions called inside
- submitCityInput.addEventListener("click", function(e){
-   e.preventDefault()
-   localStorage.setItem("search",JSON.stringify(cityNameInput.value))
-  fetchCurrent(cityNameInput.value)
-  fetchFiveDay(cityNameInput.value)
-  appendHistory()
- })
+  submitCityInput.addEventListener("click", function(e){
+    e.preventDefault()
+   
+    search.push(cityNameInput.value)
+    localStorage.setItem("search", JSON.stringify(search))
+    fetchCurrent(cityNameInput.value)
+    fetchFiveDay(cityNameInput.value)
+    appendHistory()
+  })
 
 // function fetching 5 day url and appending the values to the HTML content
 function fetchFiveDay(cityValue) {
@@ -86,38 +99,26 @@ function fetchFiveDay(cityValue) {
         dayFiveTemp.innerHTML = "Temerature: " + data.list[36].main.temp + " °F"
         dayFiveHumid.innerHTML = "Humidity: " + data.list[36].main.humidity + "%"
       });
-    };
+};
 
     //appending saved city searches to an input form with click event listener to retrive their info on click
-    function appendHistory() {
-      let getSearchHistory = JSON.parse(localStorage.getItem("search"))
-      searchHistory.innerHTML = "";
-      for (let i=0; i < getSearchHistory.length; i++) {
-          let savedCity = document.createElement("input");
-          savedCity.setAttribute("class", "form-control d-block bg-white");
-          savedCity.setAttribute("readonly", true);
-          savedCity.setAttribute("type", "text");
-          savedCity.setAttribute("value", getSearchHistory);
-          savedCity.addEventListener("click",function() {
-              fetchCurrent()
-              fetchFiveDay()
-          })
+function appendHistory() {
+  let getSearchHistory = JSON.parse(localStorage.getItem("search"))
+  searchHistory.innerHTML = "";
+  for (let i=0; i < getSearchHistory.length; i++) {
+      let savedCity = document.createElement("input");
+      savedCity.setAttribute("class", "form-control d-block bg-white");
+      savedCity.setAttribute("readonly", true);
+      savedCity.setAttribute("type", "text");
+      savedCity.setAttribute("value", getSearchHistory[i]);
+      savedCity.addEventListener("click",function() {
+              fetchCurrent(savedCity.value)
+              fetchFiveDay(savedCity.value)
+      })
           searchHistory.appendChild(savedCity);
-      }
+          console.log(searchHistory.length)
   }
+}
     
 
   
-    // let uvIndexUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&APPID=" + apiKey
-    // let latitude = cityNameInput.value
-    // let longitude = cityNameInput.value
-    
-    // fetch(uvIndexUrl)
-    // .then(function (response) {
-    //   return response.json();
-    // })
-    // .then(function (data) {
-    //   console.log("UV", data);
-      
-    // });
-    
