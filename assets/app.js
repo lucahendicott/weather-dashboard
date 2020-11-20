@@ -1,4 +1,4 @@
-//set up some loval varbs
+//set up some local varbs
 let apiKey = "30da43373157d45ad4440e9c0dc3b9d0"
 let cityNameInput = document.querySelector("#cityInput")
 let submitCityInput = document.querySelector("#submitCity")
@@ -27,7 +27,6 @@ let searchHistory = document.querySelector("#searchHistory")
 
 fetchCurrent()
 fetchFiveDay()
-
 
 // function fetching the current day weather and appending those values to the HTML content
 function fetchCurrent(cityValue) {
