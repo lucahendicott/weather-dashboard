@@ -22,5 +22,4 @@ I had some struggles with the loacal storage and appending the stored citry sear
 
 [Check the Weather!](https://lucahendicott.github.io/weather-dashboard/)
 
-[Check the Weather!](https://lucahendicott.github.io/weather-dashboard/)
 
