@@ -19,8 +19,8 @@ I had some struggles with the loacal storage and appending the stored citry sear
 [JavaScript Date](www.youtube.com/watch?v=yalxT0PEx8c)<br>
 
 ## Deployed APP
-<<<<<<< HEAD
+
 [Check the Weather!](https://lucahendicott.github.io/weather-dashboard/)
-=======
+
 [Check the Weather!](https://lucahendicott.github.io/weather-dashboard/)
->>>>>>> 16ab21d7c38c1976a11f66f05b571037380d71d9
+
